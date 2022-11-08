@@ -27,9 +27,15 @@ public class Index {
 		public static void menuCadastro() {
 			Scanner scan = new Scanner(System.in);
 			System.out.println("***** MENU CADASTRO *******");
-			System.out.println("1 Funcionario");
-			System.out.println("2 Fornecedor");
-			System.out.println("3 Produos");
+			System.out.println("1 Ordem De Serviço");
+			System.out.println("2 Motorista");
+			System.out.println("3 Veiculo");
+			System.out.println("4 Reboque");
+			System.out.println("5 Multa");
+			System.out.println("6 Parceiro");
+			System.out.println("7 Abastecidas");
+			System.out.println("8 Manutenção");
+			System.out.println("6 Contas");
 			System.out.println("0 Voltar");
 			System.out.println("Digite a operaçao desejada: ");
 			int op = scan.nextInt();
@@ -38,7 +44,7 @@ public class Index {
 //				irCadastroFuncionar();
 				 
 			} else if (op == 0) {
-			main(null);
+				main(null);
 			}
 			
 			scan.close();
