@@ -18,12 +18,18 @@ public class Index {
 			if (op == 1) {
 				menuCadastro();
 			} else if (op == 2) {
-//				menuRelatorio();
+				menuRelatorio();
 			}
 			scan.close();
 		}
 		
 		
+		public static void menuRelatorio() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 		public static void menuCadastro() {
 			Scanner scan = new Scanner(System.in);
 			System.out.println("***** MENU CADASTRO *******");
