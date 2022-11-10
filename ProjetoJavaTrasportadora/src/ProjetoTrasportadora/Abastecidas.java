@@ -1,7 +1,14 @@
 package ProjetoTrasportadora;
 
-public class Abastecidas {
+import java.io.Serializable;
 
+
+public class Abastecidas implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	
+	
 	// ATRIBUTOS
 	
 	private Float valor;

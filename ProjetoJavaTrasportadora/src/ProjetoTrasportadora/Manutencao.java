@@ -1,8 +1,12 @@
 package ProjetoTrasportadora;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Manutencao {
+public class Manutencao implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
 
 	// ATRIBUTOS
 	

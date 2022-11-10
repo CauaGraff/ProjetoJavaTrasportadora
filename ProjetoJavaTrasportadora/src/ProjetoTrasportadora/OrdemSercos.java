@@ -1,6 +1,11 @@
 package ProjetoTrasportadora;
 
-public class OrdemSercos {
+import java.io.Serializable;
+
+public class OrdemSercos implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 
 	// ATRIBUTOS
 	

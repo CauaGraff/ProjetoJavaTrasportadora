@@ -1,6 +1,11 @@
 package ProjetoTrasportadora;
 
-public class Parceiros {
+import java.io.Serializable;
+
+public class Parceiros implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 
 	// ATIBUTOS
 	

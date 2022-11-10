@@ -1,7 +1,13 @@
 package ProjetoTrasportadora;
 
-public class Conta {
+import java.io.Serializable;
 
+public class Conta implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	
+	
 	// ATRIBUTOS
 	
 	private String tipo;
