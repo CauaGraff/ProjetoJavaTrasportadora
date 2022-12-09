@@ -26,8 +26,6 @@ public class MotoristaDao {
 	public Date converteLocalDateParaDate(LocalDate data) {
 		return new Date(data.getYear()-1900, data.getMonthValue()-1, data.getDayOfMonth()) ; 
 	}
-	
-
 
 	public boolean inserir(Motorista motorista) {
 		String sql = "INSERT INTO motorista(nome, dataNasc, endereco, cpf, cnh) VALUES (?, ?, ?, ?,?)";
