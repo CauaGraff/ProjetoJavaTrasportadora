@@ -133,7 +133,7 @@ public class ControllerTelaPrincipal implements Initializable {
 
     @FXML
     void handlerTelaMulta(ActionEvent event) throws IOException {
-    	 AnchorPane a = FXMLLoader.load(getClass().getResource("/br/edu/caua/projetotransportadora/trasportadora/TelaServico.fxml"));
+    	 AnchorPane a = FXMLLoader.load(getClass().getResource("/br/edu/caua/projetotransportadora/trasportadora/TelaMulta.fxml"));
          anchorPaneFundo.getChildren().setAll(a);
     }
 
@@ -144,7 +144,7 @@ public class ControllerTelaPrincipal implements Initializable {
 
     @FXML
     void handlerTelaManutencao(ActionEvent event) throws IOException {
-    	AnchorPane a = FXMLLoader.load(getClass().getResource("/br/edu/caua/projetotransportadora/trasportadora/TelaManuencao.fxml"));
+    	AnchorPane a = FXMLLoader.load(getClass().getResource("/br/edu/caua/projetotransportadora/trasportadora/TelaManutencao.fxml"));
         anchorPaneFundo.getChildren().setAll(a);
     }
 
@@ -159,7 +159,8 @@ public class ControllerTelaPrincipal implements Initializable {
     }
 
     @FXML
-    void handlerTelaAjuda(ActionEvent event) {
-
+    void handlerTelaAjuda(ActionEvent event) throws IOException {
+    	AnchorPane a = FXMLLoader.load(getClass().getResource("/br/edu/caua/projetotransportadora/trasportadora/TelaAbastecimento.fxml"));
+        anchorPaneFundo.getChildren().setAll(a);
     }
 }

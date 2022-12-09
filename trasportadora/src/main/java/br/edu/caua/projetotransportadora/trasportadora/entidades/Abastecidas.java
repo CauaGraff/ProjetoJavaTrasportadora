@@ -15,7 +15,15 @@ public class Abastecidas implements Serializable {
 	
 	private String tipoProduto;
 	
-	private Integer quantidade;
+	private Float quantidade;
+	
+	private Integer veiculoId;
+	
+	private Integer contaId;
+
+	private Integer id;
+
+
 	
 	// METODOS GET E SET
 	
@@ -35,12 +43,36 @@ public class Abastecidas implements Serializable {
 		this.tipoProduto = tipoProduto;
 	}
 
-	public Integer getQuantidade() {
+	public Float getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(Integer quantidade) {
+	public void setQuantidade(Float quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public Integer getVeiculoId() {
+		return veiculoId;
+	}
+
+	public void setVeiculoId(Integer veiculoId) {
+		this.veiculoId = veiculoId;
+	}
+
+	public Integer getContaId() {
+		return contaId;
+	}
+
+	public void setContaId(Integer contaId) {
+		this.contaId = contaId;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

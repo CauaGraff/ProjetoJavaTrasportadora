@@ -8,17 +8,18 @@ import java.sql.SQLException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.caua.projetotransportadora.trasportadora.database.MysqlSingleton;
-import br.edu.caua.projetotransportadora.trasportadora.entidades.Motorista;
+import br.edu.caua.projetotransportadora.trasportadora.entidades.Manutencao;
+import br.edu.caua.projetotransportadora.trasportadora.dao.MotoristaDao;
 
-public class MotoristaDao {
+
+public class ManutecaoDao {
 	private Connection connection;
 
-	public MotoristaDao() {
+	public ManutecaoDao() {
 		this.connection = MysqlSingleton.getConnection();
 	}
 	
@@ -26,18 +27,18 @@ public class MotoristaDao {
 	public Date converteLocalDateParaDate(LocalDate data) {
 		return new Date(data.getYear()-1900, data.getMonthValue()-1, data.getDayOfMonth()) ; 
 	}
+
+	public static LocalDate asLocalDate(Date date) {
+		return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+	}
 	
-
-
-	public boolean inserir(Motorista motorista) {
-		String sql = "INSERT INTO motorista(nome, dataNasc, endereco, cpf, cnh) VALUES (?, ?, ?, ?,?)";
+	public boolean inserir(Manutencao manutencao) {
+		String sql = "INSERT INTO manutencao (valro, dataManutencao, contaId) VALUES (?, ?, ?)";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, motorista.getNome());
-			stmt.setDate(2, converteLocalDateParaDate(motorista.getDataNasc()));			
-			stmt.setString(3, motorista.getEndereco());
-			stmt.setString(4, motorista.getCpf());
-			stmt.setString(5, motorista.getCnh());
+			stmt.setFloat(1, manutencao.getValor());
+			stmt.setDate(2, converteLocalDateParaDate(manutencao.getData()));
+			stmt.setFloat(3, manutencao.getContaId());
 			stmt.execute();
 			return true;
 
@@ -47,38 +48,34 @@ public class MotoristaDao {
 		}
 	}
 
-	public List<Motorista> listar() {
-		String sql = "SELECT * FROM  motorista";
-		List<Motorista> listaMotorista = new ArrayList<>();
+	public List<Manutencao> listar() {
+		String sql = "SELECT * FROM  manutencao";
+		List<Manutencao> listaManutencao = new ArrayList<>();
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			ResultSet resultado = stmt.executeQuery();
 			while (resultado.next()) {
-				Motorista motorista = new Motorista();
-				motorista.setId(resultado.getInt("id"));
-				motorista.setNome(resultado.getString("nome"));
-				motorista.setDataNasc(resultado.getString("dataNasc"));
-				motorista.setEndereco(resultado.getString("endereco"));
-				motorista.setCpf(resultado.getString("cpf"));
-				motorista.setCnh(resultado.getString("cnh"));
-				listaMotorista.add(motorista);
+				Manutencao manutencao = new Manutencao();
+				manutencao.setId(resultado.getInt("id"));
+				manutencao.setValor(resultado.getFloat("valro"));
+				manutencao.setData(asLocalDate(resultado.getDate("dataManutencao")));
+				manutencao.setContaId(resultado.getInt("contaId"));
+			
+				listaManutencao.add(manutencao);
 			}
 		} catch (SQLException ex) {
 //			Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		return listaMotorista;
+		return listaManutencao;
 	}
 
-	public boolean alterar(Motorista motorista) {
-		String sql = "UPDATE motorista SET nome=?, dataNasc=?, endereco=?, cpf=?, cnh=? WHERE id=?";
+	public boolean alterar(Manutencao abastecidas) {
+		String sql = "UPDATE manutecao SET valro=?, dataManutencao=? WHERE id=?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, motorista.getNome());
-			stmt.setDate(2, converteLocalDateParaDate(motorista.getDataNasc()));
-			stmt.setString(3, motorista.getEndereco());
-			stmt.setString(4, motorista.getCpf());
-			stmt.setString(5, motorista.getCnh());
-			stmt.setInt(6, motorista.getId());
+			stmt.setFloat(1, abastecidas.getValor());
+			stmt.setDate(2,converteLocalDateParaDate(abastecidas.getData()));
+			stmt.setInt(3, abastecidas.getId());
 			stmt.execute();
 			return true;
 		} catch (SQLException ex) {
@@ -87,8 +84,8 @@ public class MotoristaDao {
 		}
 	}
 
-	public boolean remover(Motorista motorista) {
-		String sql = "DELETE FROM motorista WHERE id=?";
+	public boolean remover(Manutencao motorista) {
+		String sql = "DELETE FROM manutecao WHERE id=?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, motorista.getId());

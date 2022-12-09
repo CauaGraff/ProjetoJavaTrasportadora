@@ -1,6 +1,7 @@
 package br.edu.caua.projetotransportadora.trasportadora.entidades;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Motorista implements Serializable {
@@ -13,7 +14,7 @@ public class Motorista implements Serializable {
 
 	private String nome;
 
-	private Date dataNasc;
+	private LocalDate dataNasc;
 	
 	private String endereco;
 
@@ -31,11 +32,11 @@ public class Motorista implements Serializable {
 		this.nome = nome;
 	}
 
-	public Date getDataNasc() {
+	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
 
-	public void setDataNasc(Date dataNasc) {
+	public void setDataNasc(LocalDate dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 

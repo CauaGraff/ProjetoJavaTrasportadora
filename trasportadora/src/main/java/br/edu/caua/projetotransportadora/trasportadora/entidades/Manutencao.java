@@ -1,6 +1,7 @@
 package br.edu.caua.projetotransportadora.trasportadora.entidades;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Manutencao implements Serializable {
 	
@@ -15,7 +16,7 @@ public class Manutencao implements Serializable {
 	
 	private Float valor;
 	
-	private String data;
+	private LocalDate data;
 
 	// METODOS GET E SET
 	
@@ -27,11 +28,11 @@ public class Manutencao implements Serializable {
 		this.valor = valor;
 	}
 
-	public String getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
